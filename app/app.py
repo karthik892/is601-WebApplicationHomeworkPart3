@@ -39,9 +39,9 @@ def form_edit_get(mlb_id):
 @app.route('/edit/<int:mlb_id>', methods=['POST'])
 def form_update_post(mlb_id):
     cursor = mysql.get_db().cursor()
-    inputData = (request.form.get('fldName'), request.form.get('fidTeam'), request.form.get('fidPosition'),
-                 request.form.get('fidWeight'), request.form.get('fidHeight'),
-                 request.form.get('fidAge'), mlb_id)
+    inputData = (request.form.get('fldName'), request.form.get('fldTeam'), request.form.get('fldPosition'),
+                 request.form.get('fldWeight'), request.form.get('fldHeight'),
+                 request.form.get('fldAge'), mlb_id)
     sql_update_query = """UPDATE mlb_players t SET t.Name = %s, t.Team = %s, t.Position = %s, t.Weight_lbs = 
     %s, t.Height_inches = %s, t.Age = %s WHERE t.id = %s """
     cursor.execute(sql_update_query, inputData)
@@ -55,9 +55,9 @@ def form_insert_get():
 @app.route('/new', methods=['POST'])
 def form_insert_post():
     cursor = mysql.get_db().cursor()
-    inputData = (request.form.get('fldName'), request.form.get('fidTeam'), request.form.get('fidPosition'),
-                 request.form.get('fidWeight'), request.form.get('fidHeight'),
-                 request.form.get('fidAge'))
+    inputData = (request.form.get('fldName'), request.form.get('fldTeam'), request.form.get('fldPosition'),
+                 request.form.get('fldWeight'), request.form.get('fldHeight'),
+                 request.form.get('fldAge'))
     sql_insert_query = """INSERT INTO mlb_players (`Name`, `Team`, `Position`, `Height_inches`, `Weight_lbs`, `Age`) VALUES (%s, %s,%s, %s,%s, %s) """
     cursor.execute(sql_insert_query, inputData)
     mysql.get_db().commit()
