@@ -21,5 +21,13 @@ def index():
     result = cursor.fetchall()
     return render_template('index.html', title='Home', mlb=result)
 
+@app.route('/view/<int:mlb_id>', methods=['GET'])
+def record_view(mlb_id):
+    cursor = mysql.get_db().cursor()
+    cursor.execute('SELECT * FROM mlb_players WHERE id= %s', mlb_id)
+    result = cursor.fetchall()
+    return render_template('view.html', title='View Form', mlb=result[0])
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
