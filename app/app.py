@@ -28,6 +28,15 @@ def record_view(mlb_id):
     result = cursor.fetchall()
     return render_template('view.html', title='View Form', mlb=result[0])
 
+@app.route('/edit/<int:mlb_id>', methods=['GET'])
+def form_edit_get(mlb_id):
+    print(mlb_id)
+    cursor = mysql.get_db().cursor()
+    cursor.execute('SELECT * FROM mlb_players WHERE id= %s', mlb_id)
+    result = cursor.fetchall()
+    return render_template('edit.html', title='Edit Form', mlb=result[0])
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
