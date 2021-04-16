@@ -1,45 +1,35 @@
 <!doctype html>
 <html lang="en">
 <head>
-
-    <!-- Required meta tags -->
-
-    <!-- Bootstrap CSS -->
-
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-{% if user %}
-    <title>Welcome to {{ user.username }}'s site</title>
-    {% else %}
-    <title>Welcome to My Site!</title>
-    {% endif %}
+    <title>MLB Players</title>
 <head>
- <body>
+<body>
 <!-- As a heading -->
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="api/cities">Cities API JSON endpoint <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
 
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">{% if user %}{{ user.username }}'s Homepage{% else %}
-    <title>Welcome to My Homepage</title>
-    {% endif %}</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="api/cities">Cities API JSON endpoint <span class="sr-only">(current)</span></a>
-      </li>
-
-    </ul>
-  </div>
-</nav>
 <main role="main" class="container">{% block content %}{% endblock %}</main>
     <div id="footer">
 <!-- Optional JavaScript -->

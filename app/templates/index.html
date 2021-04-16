@@ -3,25 +3,28 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">City Name</th>
-        <th scope="col">Latitude</th>
-        <th scope="col">Longitude</th>
-        <th scope="col">Country</th>
-        <th scope="col">Abbreviation</th>
-        <th scope="col">Capital Status</th>
-        <th scope="col">Population</th>
+        <th scope="col"> Name</th>
+        <th scope="col">Team</th>
+        <th scope="col">Position</th>
+        <th scope="col">Height (in)</th>
+        <th scope="col">weight (lb)</th>
+        <th scope="col">Age</th>
+        <th scope="col">Actions</th>
     </tr>
     </thead>
     <tbody>
-    {% for city in cities %}
+    {% for player in mlb %}
     <tr>
-        <td>{{ city.fldName }}</td>
-        <td>{{ city.fldLat }}</td>
-        <td>{{ city.fldLong }}</td>
-        <td>{{ city.fldCountry }}</td>
-        <td>{{ city.fldAbbreviation }}</td>
-        <td>{{ city.fldCapitalStatus }}</td>
-        <td>{{ city.fldPopulation }}</td>
+        <td><a href="/view/{{ player.id }}">{{ player.Name }}</a></td>
+        <td>{{ player.Team }}</td>
+        <td>{{ player.Position }}</td>
+        <td>{{ player.Height_inches }}</td>
+        <td>{{ player.Weight_lbs }}</td>
+        <td>{{ player.Age }}</td>
+        <td>
+            <a href="/edit/{{ player.id }}" class="btn btn-primary">Edit</a>
+            <a href="" class="btn btn-danger">Delete</a>
+        </td>
     </tr>
     {% endfor %}
     </tbody>
