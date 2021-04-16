@@ -48,5 +48,20 @@ def form_update_post(mlb_id):
     mysql.get_db().commit()
     return redirect("/", code=302)
 
+@app.route('/new', methods=['GET'])
+def form_insert_get():
+    return render_template('new.html', title='New City Form')
+
+@app.route('/new', methods=['POST'])
+def form_insert_post():
+    cursor = mysql.get_db().cursor()
+    inputData = (request.form.get('fldName'), request.form.get('fidTeam'), request.form.get('fidPosition'),
+                 request.form.get('fidWeight'), request.form.get('fidHeight'),
+                 request.form.get('fidAge'))
+    sql_insert_query = """INSERT INTO mlb_players (`Name`, `Team`, `Position`, `Height_inches`, `Weight_lbs`, `Age`) VALUES (%s, %s,%s, %s,%s, %s) """
+    cursor.execute(sql_insert_query, inputData)
+    mysql.get_db().commit()
+    return redirect("/", code=302)
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
