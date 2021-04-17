@@ -63,5 +63,13 @@ def form_insert_post():
     mysql.get_db().commit()
     return redirect("/", code=302)
 
+@app.route('/delete/<int:city_id>', methods=['GET'])
+def form_delete_post(city_id):
+    cursor = mysql.get_db().cursor()
+    sql_delete_query = """DELETE FROM mlb_players WHERE id = %s """
+    cursor.execute(sql_delete_query, city_id)
+    mysql.get_db().commit()
+    return redirect("/", code=302)
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
