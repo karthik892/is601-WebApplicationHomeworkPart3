@@ -3,7 +3,7 @@ use citiesData;
 
 CREATE TABLE IF NOT EXISTS mlb_players (
     `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `Name` VARCHAR(17) CHARACTER SET utf8,
+    `Name` VARCHAR(50) CHARACTER SET utf8,
     `Team` VARCHAR(6) CHARACTER SET utf8,
     `Position` VARCHAR(20) CHARACTER SET utf8,
     `Height_inches` INT,
